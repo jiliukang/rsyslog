@@ -276,6 +276,7 @@ static rsRetVal writeMySQL(wrkrInstanceData_t *pWrkrData, const uchar *const psz
 	}
 
 	/* try insert */
+	mysql_query(pWrkrData->hmysql,"set names 'utf8'");
 	if(mysql_query(pWrkrData->hmysql, (char*)psz)) {
 		const int mysql_err = mysql_errno(pWrkrData->hmysql);
 		/* We assume server error codes are non-recoverable, mainly data errors.
